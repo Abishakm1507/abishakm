@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Github, Linkedin, Download } from "lucide-react";
 
 const navItems = [
+  { label: "Home", href: "#" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
@@ -36,20 +37,53 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <a href="#" className="text-xl font-display font-bold text-gradient">
-          Abisha K M
+          Abisha
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
-            <a
+            <motion.a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              whileHover={{ y: -1 }}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
             >
               {item.label}
-            </a>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
+            </motion.a>
           ))}
+
+          <div className="w-px h-5 bg-border mx-1" />
+
+          <motion.a
+            href="https://github.com/Abishakm1507"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Github size={16} />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/abisha-k-m-4a4906290"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Linkedin size={16} />
+          </motion.a>
+          <motion.a
+            href="#"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-muted transition-colors inline-flex items-center gap-1.5 text-sm"
+          >
+            <Download size={14} /> Resume
+          </motion.a>
           <button
             onClick={() => setDark(!dark)}
             className="p-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-muted transition-colors"
@@ -60,7 +94,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex lg:hidden items-center gap-3">
           <button
             onClick={() => setDark(!dark)}
             className="p-2 rounded-lg bg-secondary text-secondary-foreground"
@@ -81,19 +115,33 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-border"
+            className="lg:hidden glass border-t border-border"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
+              {navItems.map((item, i) => (
+                <motion.a
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground"
                 >
                   {item.label}
-                </a>
+                </motion.a>
               ))}
+              <div className="flex items-center gap-3 pt-2 border-t border-border">
+                <a href="https://github.com/Abishakm1507" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary text-secondary-foreground">
+                  <Github size={16} />
+                </a>
+                <a href="https://www.linkedin.com/in/abisha-k-m-4a4906290" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-secondary text-secondary-foreground">
+                  <Linkedin size={16} />
+                </a>
+                <a href="#" className="px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground inline-flex items-center gap-1.5 text-sm">
+                  <Download size={14} /> Resume
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
