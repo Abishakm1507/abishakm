@@ -11,6 +11,7 @@ const experiences = [
       "Built real-time chat app with React, Next.js, Node.js, PostgreSQL + WebSocket",
       "Implemented JWT auth + role-based authorization",
       "Optimized API performance; load testing with JMeter",
+      "Authored technical documentation and deployment guides",
     ],
   },
   {
@@ -71,35 +72,48 @@ const ExperienceSection = () => {
               {experiences.map((exp, i) => (
                 <motion.div
                   key={exp.title + exp.org}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
                   className="relative pl-16"
                 >
                   {/* Icon */}
-                  <div className="absolute left-0 w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className="absolute left-0 w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow"
+                  >
                     {exp.type === "work" ? (
                       <Briefcase size={18} className="text-primary-foreground" />
                     ) : (
                       <GraduationCap size={18} className="text-primary-foreground" />
                     )}
-                  </div>
+                  </motion.div>
 
-                  <div className="p-6 rounded-xl bg-gradient-card shadow-card border border-border/50">
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    className="p-6 rounded-xl bg-gradient-card shadow-card border border-border/50 hover:shadow-glow transition-all duration-300"
+                  >
                     <span className="text-xs font-medium text-primary">{exp.period}</span>
                     <h3 className="font-display font-semibold text-lg mt-1">{exp.title}</h3>
                     <p className="text-sm text-muted-foreground mb-3">{exp.org}</p>
                     {exp.points.length > 0 && (
                       <ul className="space-y-1.5">
                         {exp.points.map((p, j) => (
-                          <li key={j} className="text-sm text-muted-foreground flex gap-2">
-                            <span className="text-primary mt-1">•</span> {p}
-                          </li>
+                          <motion.li
+                            key={j}
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 + j * 0.05 }}
+                            className="text-sm text-muted-foreground flex gap-2"
+                          >
+                            <span className="text-primary mt-1">▸</span> {p}
+                          </motion.li>
                         ))}
                       </ul>
                     )}
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
