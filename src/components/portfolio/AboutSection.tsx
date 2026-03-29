@@ -5,7 +5,7 @@ import { Brain, Code, Globe, Target } from "lucide-react";
 const specializations = [
   { icon: Brain, title: "AI & Machine Learning", desc: "Deep Learning, Computer Vision, NLP, RAG, LLMs" },
   { icon: Code, title: "Full-Stack Development", desc: "React, FastAPI, Node.js, PostgreSQL" },
-  { icon: Globe, title: "Global Aspirations", desc: "Pursuing JLPT N3 · Japan's AI ecosystem" },
+  { icon: Globe, title: "Global Aspirations", desc: "Pursuing JLPT N3" },
 ];
 
 const stats = [
