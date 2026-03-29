@@ -109,11 +109,11 @@ const HeroSection = () => {
             transition={{ delay: 0.5 }}
             className="inline-flex items-center gap-6 mb-10 px-6 py-3 rounded-2xl glass"
           >
-            <AnimatedStat value="97%" label="CNN Accuracy" />
-            <div className="w-px h-8 bg-border" />
             <AnimatedStat value="10+" label="AI Projects" />
             <div className="w-px h-8 bg-border" />
             <AnimatedStat value="5+" label="Hackathons" />
+            <div className="w-px h-8 bg-border" />
+            <AnimatedStat value="3" label="Internships" />
           </motion.div>
 
           {/* CTA */}
