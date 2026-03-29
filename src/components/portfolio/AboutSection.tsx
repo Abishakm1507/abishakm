@@ -9,7 +9,6 @@ const specializations = [
 ];
 
 const stats = [
-  { value: 97, suffix: "%", label: "CNN Accuracy" },
   { value: 10, suffix: "+", label: "AI Projects" },
   { value: 5, suffix: "+", label: "Hackathons" },
   { value: 3, suffix: "", label: "Internships" },
